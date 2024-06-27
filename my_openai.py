@@ -1,11 +1,11 @@
 from openai import OpenAI
 from dotenv import dotenv_values
-
+import os
 config = dotenv_values(".env")
 
 
 def call_openAI(DESCRIPTION):
-    client = OpenAI(api_key=config["KEY"])
+    client = OpenAI(api_key=os.environ.get('KEY'))
 
     prompt = f"Given this description, come up with relevant tags that help identify it and output as a JSON with the key called tags: {DESCRIPTION}"
     chat_completion = client.chat.completions.create(
