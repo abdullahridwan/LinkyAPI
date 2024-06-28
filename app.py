@@ -22,10 +22,5 @@ def json_example():
     desc = request_data["description"]
 
     response = call_openAI(desc)
-    return """
-           The name value is: {}
-           The desc value is: {}
-           The generated response is: {}""".format(
-        name, desc, response
-    )
+    return response
 
