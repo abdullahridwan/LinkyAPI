@@ -7,7 +7,8 @@ config = dotenv_values(".env")
 def call_openAI(DESCRIPTION):
     client = OpenAI(api_key=os.environ.get('KEY'))
 
-    prompt = f"Given this description, come up with relevant tags that help identify it and output as a JSON with the key called tags: {DESCRIPTION}"
+    prompt = """Given this description, come up with relevant tags that help identify it and output as a JSON. An example
+JSON output looks like this {\"tags\": [\"Halal\", \"Brooklyn\"]}. Here is the description: """ + DESCRIPTION
     chat_completion = client.chat.completions.create(
         messages=[
             {
